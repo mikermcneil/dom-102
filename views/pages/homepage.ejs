@@ -1,3 +1,14 @@
+
+<!--
+//  ██████╗  ██████╗ ███╗   ███╗     ██╗ ██████╗ ██████╗
+//  ██╔══██╗██╔═══██╗████╗ ████║    ███║██╔═████╗╚════██╗
+//  ██║  ██║██║   ██║██╔████╔██║    ╚██║██║██╔██║ █████╔╝
+//  ██║  ██║██║   ██║██║╚██╔╝██║     ██║████╔╝██║██╔═══╝
+//  ██████╔╝╚██████╔╝██║ ╚═╝ ██║     ██║╚██████╔╝███████╗
+//  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝     ╚═╝ ╚═════╝ ╚══════╝
+//
+-->
+
 <style>
 
 /* Principles:
@@ -79,5 +90,92 @@ body, html {
       You have to put it at the end, AFTER all the floated elements.
     -->
   </div>
+</div>
+
+
+
+<!--
+//  ██████╗  ██████╗ ███╗   ███╗     ██╗ ██████╗  ██╗   ██████╗
+//  ██╔══██╗██╔═══██╗████╗ ████║    ███║██╔═████╗███║   ██╔══██╗
+//  ██║  ██║██║   ██║██╔████╔██║    ╚██║██║██╔██║╚██║   ██║  ██║
+//  ██║  ██║██║   ██║██║╚██╔╝██║     ██║████╔╝██║ ██║   ██║  ██║
+//  ██████╔╝╚██████╔╝██║ ╚═╝ ██║     ██║╚██████╔╝ ██║██╗██████╔╝
+//  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝     ╚═╝ ╚═════╝  ╚═╝╚═╝╚═════╝
+//
+-->
+<style>
+.foobar {
+  display: block;
+}
+
+
+
+/* Quick review of how selectors work in raw CSS, especially important
+outside of the context of LESS or a similar preprocessor (Stylus, SAAS) */
+span.foobar { /* "span.foobar" is a more specific selector than just ".foobar" */
+  color: green;
+  font-weight: bold;
+  font-style: normal;
+  /* every <span> on the page that has at least the class "foobar"  */
+}
+.foobar {
+  color: red;
+  font-style: italic;
+  /* every element on the page that has at least the class "foobar" */
+}
+
+
+
+/* The precedence of CSS rules (i.e. the precedence in which any given style rule within the selector gets applied)
+is determined first by specificity of the selector, and second by order in which the selector is listed
+on the HTML page */
+
+
+
+.foobar .turquoise {
+  /* this selector matches every .turquoise element which is inside .foobar (no matter how deep) */
+  color: turquoise;
+}
+
+.foobar > .turquoise {
+  /* this selector matches every .turquoise element which is a direct child of .foobar */
+  color: turquoise;
+  font-style: normal;
+}
+
+
+.foobar .turquoise.selected {
+  /* this selector matches every .turquoise element which also has .selected, which is a descendant of .foobar */
+  font-size: 50px;
+}
+
+
+.foobar .turquoise .selected { /* « if I saw that, I would assume it's a mistake */
+  /* this selector matches every .selected element which is a descendant of .turquoise, which is a descendant of .foobar */
+}
+
+.foobar .turquoise:hover {
+  /* pseudo-class selector */
+  text-decoration: underline;
+}
+.foobar .turquoise:active {
+  font-style: normal;
+  font-weight: bold;
+}
+</style>
+
+
+
+<div class="foobar">
+  other loose text in foobar
+  <div>
+    loose text in &lt;div&gt; tag
+    <span class="turquoise selected">this is a span in there (grandchild)</span>
+    <div>
+      double-nested div in foobar
+      <span class="turquoise">this is a span way deep in there (great grandchild)</span>
+    </div>
+  </div>
+  <span class="turquoise">this is a span inside foobar (child)</span>
 </div>
 
