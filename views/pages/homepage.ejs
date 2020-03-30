@@ -1,0 +1,83 @@
+<style>
+
+/* Principles:
+1. Never put a display:block thing inside a display:inline
+2. Never apply float to a display:inline element.
+3. Never put floated elements inside a display:inline element
+4.
+
+*/
+
+
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.topbar {
+  border-bottom: 1px solid #ddd;
+  background: green;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+
+.container-under-the-topbar {
+  background: red;
+  padding: 5px;
+  overflow: auto; /* force this element's automatically-computed height to expand to include descendant element which have been floated  */
+}
+
+.left-side-nav {
+  background: lemonchiffon;
+  margin-left: 15px;
+  float: left;
+}
+.main-content-card-stream {
+  /*background: magenta;*/
+  margin-left: 15px;
+  float: left;
+}
+.right-bonus-widget {
+  background: cyan;
+  margin-left: 15px;
+  float: left;
+}
+
+
+</style>
+
+
+<div>
+  <div class="topbar">
+    <a href="http://omfgdogs.com">Home</a>
+    <a href="http://omfgdogs.com">Answer</a>
+    <a href="http://omfgdogs.com">Spaces</a>
+  </div>
+  <div class="container-under-the-topbar">
+    <div style="margin-left: auto; margin-right: auto; background: orange; overflow: auto; width: 380px;">
+      <div class="left-side-nav">
+        <a href="http://omfgdogs.com">Feed</a>
+        <a href="http://omfgdogs.com">Techcrunch</a>
+      </div>
+      <div class="main-content-card-stream">
+        <div class="card">Piece of content</div>
+        <div class="card">Piece of content</div>
+        <div class="card">Piece of content</div>
+      </div>
+      <div class="right-bonus-widget">
+        <span>widget chunk!</span>
+      </div>
+    </div>
+    <!--
+      Another alternative method of clearing floats:
+
+      <div class="has-to-be-last-sibling-to-all-the-floats" style="clear: both;"></div>
+
+      You have to put it at the end, AFTER all the floated elements.
+    -->
+  </div>
+</div>
+
